@@ -1,4 +1,4 @@
-#budget App <br>
+<h1>budget App<h1>
 
 it's a web application build by only (html,css) and programmed by javascript vanilla 
 
