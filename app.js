@@ -18,10 +18,32 @@ var data = {
         exp : [],
         inc : [],
     },
- totals = {
+ totals : {
      exp : 0,
      inc : 0,
  } 
+
+}
+return {
+    addItem: function(type,des,val) {
+        var newItem,ID
+
+        data.allItems[type].length > 0 ? ID = data.allItems[type][data.allItems[type].length - 1].id + 1 : ID = 0
+        
+        if (type=== 'exp') {
+            newItem = new Expense(ID, des , val);
+        } else {
+            newItem = new Income(ID, des , val)
+        }
+        
+   
+    data.allItems[type].push(newItem)
+    return newItem
+    },
+
+testing : function (){
+    console.log(data)
+}
 
 }
 
@@ -73,12 +95,14 @@ var Ctr = (function(uiCtr,budgCtr) {
 
   
     var ctrlAdd = function() {
- 
+        var input,newItem
+        
         //get the input field
-        var input = uiCtr.getInput()
+        input = uiCtr.getInput()
         console.log(input)
 
         //add the item to the budget controller
+        newItem = budgCtr.addItem(input.type , input.description , input.value)
 
         //display on ui
 
